@@ -24,7 +24,8 @@ func NewHandler(service CommentService) *Handler {
 	h.mapRoutes()
 
 	h.Server = &http.Server{
-		Addr: "0.0.0.0:0000",
+		Addr:    "0.0.0.0:8080",
+		Handler: h.Router,
 	}
 
 	h.mapRoutes()
@@ -35,4 +36,11 @@ func (h *Handler) mapRoutes() {
 	h.Router.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello World")
 	})
+}
+
+func (h *Handler) Serve() error {
+	if err := h.Server.ListenAndServe(); err != nil {
+		return err
+	}
+	return nil
 }
