@@ -1,6 +1,28 @@
+
 # Go REST API
 
-REST API example for personal portfolio. 
+REST API example for personal portfolio.
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Permitted/go-rest-api
+```
+
+Go to the project directory
+
+```bash
+  cd go-rest-api
+```
+
+Start the server
+
+```bash
+   docker-compose up
+```
 
 
 ## Using Guideline
@@ -26,3 +48,51 @@ Build: `task build`
 Down: `task down`
 
 Integration Test:`task integration-test`
+
+
+## API Reference
+
+POST, PUT and DELETE have JWT Authentication. Generate key from https://jwt.io/.  
+Key: "missionimpossible"
+#### Post Comment
+
+```http
+  POST /api/v1/comment/
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `comment` | `string` | Post the created comment   |
+
+#### Get Comment
+
+```http
+  GET /api/v1/comment/${id}
+```
+
+| Parameter | Type     | Description                          |
+| :-------- | :------- | :----------------------------------- |
+| `id`      | `string` | **Required**. Id of comment to fetch |
+
+#### UPDATE Comment
+
+```http
+  UPDATE /api/v1/comment/${id}
+```
+
+| Parameter | Type     | Description                           |
+| :-------- | :------- | :------------------------------------ |
+| `id`      | `string` | **Required**. Id of comment to update |
+
+
+#### DELETE Comment
+
+```http
+  DELETE /api/v1/comment/${id}
+```
+
+| Parameter | Type     | Description                           |
+| :-------- | :------- | :------------------------------------ |
+| `id`      | `string` | **Required**. Id of comment to delete |
+
+
